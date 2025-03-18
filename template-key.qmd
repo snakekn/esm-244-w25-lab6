@@ -1,6 +1,8 @@
 ---
-title: "Lab 6: Random Forests Key"
-author: "Nathaniel Grimes"
+title: "Lab 6: Random Forests"
+author: 
+  - "Nathaniel Grimes"
+  - "Nadav Kempinski"
 format: 
   html:
     embed-resources: true
@@ -10,7 +12,7 @@ execute:
   warning: false
 ---
 
-```{r}
+```{r, echo=false}
 library(tidymodels)
 library(tidyverse)
 library(ggcorrplot)
@@ -57,7 +59,8 @@ mom %>%
     method = "circle",
     type='upper',
     outline.col = "black",
-  )
+  )+
+  labs(title="Variable Correlation Plot")
 ```
 
 With any classification routine, we always need to check the relative balance of our classes. 
@@ -176,7 +179,8 @@ rf_res %>%
   ggplot(aes(mtry, mean, color = min_n)) +
   geom_line(alpha = 0.5, linewidth = 1.5) +
   geom_point() +
-  labs(y = "AUC")
+  labs(y = "AUC",title="Hypertuning Parameters for Random Forests Model")+
+  theme_minimal()
 ```
 
 
